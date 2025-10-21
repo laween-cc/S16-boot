@@ -13,8 +13,6 @@ BOOT: ; Assuming bios put the boot drive in dl
     MOV SS, CX
     MOV SP, 7C00H
 
-    MOV BYTE [BOOTDRIVE], DL
-
 ENFORCE:
     INT 12H ; Enforce minimum memory to be 128KiB
     CMP AX, 128
@@ -30,24 +28,22 @@ COMPUTE:
 
     ; Root sectors
     ; Root directory entries * 32 / 512
-    MOV DX, [7C11H]
-    SHL DX, 5
-    SHR DX, 9
+    MOV BX, [7C11H]
+    SHL BX, 5
+    SHR BX, 9
 
     ; First data sector
     ; Root sector + root sectors
     MOV AL, CL
-    ADD AL, DL
+    ADD AL, BL
     MOV BYTE [DATASECTOR], AL
 
 S16:
     ; Read the entire root into memroy
-    MOV DH, DL
-    MOV DL, [BOOTDRIVE]
+    MOV DH, BL
     MOV BX, ROOTDUMP
     CALL DISK
 
-    MOV BX, ROOTDUMP
     MOV CX, [7C11H]
 FIND:
 
@@ -72,7 +68,6 @@ FIND:
     MOV AL, [DATASECTOR]
     XOR AH, AH
     ADD CX, AX
-    ; MOV DL, [BOOTDRIVE]
     MOV BX, 0500H
     CALL DISK
 
@@ -80,7 +75,6 @@ FIND:
     ; Load the first fat table into memory
     MOV CX, [7C0EH]
     MOV DH, [7C16H]
-    ; MOV DL, [BOOTDRIVE]
     MOV BX, FATDUMP
     CALL DISK
 
@@ -123,7 +117,6 @@ LOADFAT:
     MOV AL, [DATASECTOR]
     XOR AH, AH
     ADD CX, AX
-    ; MOV DL, [BOOTDRIVE]
     CALL DISK
 
     ADD BX, 0200H
@@ -230,10 +223,9 @@ BOOTMSG: DB "BOOT ERROR"
 BOOTLEN: EQU $ - BOOTMSG
 HELPMSG: DB 0AH, 0DH, "PRESS ANY KEY TO REBOOT.."
 HELPLEN: EQU $ - HELPMSG
-BOOTDRIVE: EQU 0900H
-DATASECTOR: EQU 0901H
-ROOTDUMP: EQU 0902H
-FATDUMP: EQU 4902H
+DATASECTOR: EQU 1500H
+ROOTDUMP: EQU 1501H
+FATDUMP: EQU 5501H
 
 ; Pad left over space
 PADLEN: EQU 448 - ($ - $$)
