@@ -1,0 +1,22 @@
+S16 boot sector recommended implementation:
+
+1 Enforce a minimum of 128KiB of usable memory
+2 Naviage through root to find S16.SYS
+3 Dump first cluster of S16.SYS into memory at 0000:0500h
+4 Follow fat chain to load the rest of the clusters (if none found then assume already loaded)
+5 Put boot drive into dl
+6 Perform a far jump to 0000:0500h
+
+If error:
+
+1 Clear the screen
+2 Write a error message to the screen like "BOOT ERROR"
+3 Halt
+
+Optionally write "Press any key to reboot.." on a newline, wait for key press, and then cold reboot
+
+Disk service to use: int 13,2h
+
+Goal: Load S16.SYS at 0000:0500h and put boot drive into dl and perform a far jump
+
+Note: feel free to try different methods for the boot sector!
