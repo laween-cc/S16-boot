@@ -16,7 +16,13 @@ If error:
 Optionally write "Press any key to reboot.." on a newline, wait for key press, and then cold reboot
 
 Disk service to use: int 13,2h
-
-Goal: Load S16.SYS at 0000:0500h and put boot drive into dl and perform a far jump
-
+Goal: load S16.SYS at 0000:0500h and put boot drive into dl and perform a far jump
 Note: feel free to try different methods for the boot sector!
+
+Structure:
+
+0000:7C00H - BIOS PARAMETER BLOCK - 62 bytes (REQUIRED)
+
+0000:7C3EH - MACHINE CODE - 448 bytes
+
+0000:7DFEH - BOOT SIGNATURE - 2 bytes
