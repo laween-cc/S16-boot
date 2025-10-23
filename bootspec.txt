@@ -17,8 +17,6 @@ Optionally write "Press any key to reboot.." on a newline, wait for key press, a
 
 Disk service to use: int 13,2h
 Goal: load S16.SYS at 0000:0500h and put boot drive into dl and perform a far jump
-Video mode: DO NOT SET ANY VIDEO MODE!
-
 Note: feel free to try different methods for the boot sector!
 
 Structure:
