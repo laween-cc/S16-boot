@@ -15,12 +15,10 @@ If error:
 
 Optionally write "Press any key to reboot.." on a newline, wait for key press, and then cold reboot
 
-Must do:
+MUST DO:
 
 1 Do not change the video mode!
 2 Load S16.SYS at 0000:0500h and put boot drive into dl and perform a far jump
-
-Note: Feel free to try different methods for the boot sector!
 
 Structure:
 
@@ -29,3 +27,5 @@ Structure:
 0000:7C3EH - MACHINE CODE - 448 bytes
 
 0000:7DFEH - BOOT SIGNATURE - 2 bytes
+
+Note: Feel free to try different methods for the boot sector!
