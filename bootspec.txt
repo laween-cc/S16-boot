@@ -15,9 +15,12 @@ If error:
 
 Optionally write "Press any key to reboot.." on a newline, wait for key press, and then cold reboot
 
-Disk service to use: int 13,2h
-Goal: load S16.SYS at 0000:0500h and put boot drive into dl and perform a far jump
-Note: feel free to try different methods for the boot sector!
+Must do:
+
+1 Do not change the video mode!
+2 Load S16.SYS at 0000:0500h and put boot drive into dl and perform a far jump
+
+Note: Feel free to try different methods for the boot sector!
 
 Structure:
 
