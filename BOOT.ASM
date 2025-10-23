@@ -131,11 +131,13 @@ SKIP:
 
 ERROR: ; I tried to make this as small as possible
     ; Clear the screen
-    MOV AX, 0003H
+    MOV AH, 0FH
+    INT 10H
+    XOR AH, AH
     INT 10H
 
     ; Write the error message to the screen
-    XOR BX, BX
+    MOV BL, 07H
     MOV AH, 0EH
     MOV SI, BOOTMSG
     MOV CL, BOOTLEN
