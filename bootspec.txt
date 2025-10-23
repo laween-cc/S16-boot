@@ -19,7 +19,6 @@ Optionally write "Press any key to reboot.." (make sure attribute is 07h) on a n
 
 REQUIRED BEHAVIOR:
 
-1 Do not change the video mode!
 2 Load S16.SYS at 0000:0500h and put boot drive into dl and perform a far jump
 
 REQUIRED STRUCTURE:
