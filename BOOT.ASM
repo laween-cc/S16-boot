@@ -14,8 +14,8 @@ BOOT: ; Assuming bios put the boot drive in dl
     MOV SP, 7C00H
 
 ENFORCE:
-    INT 12H ; Enforce minimum memory to be 128KiB
-    CMP AX, 128
+    INT 12H ; Enforce minimum memory to be 64KiB
+    CMP AX, 64
     JL ERROR
 
 COMPUTE:
@@ -217,7 +217,7 @@ DISK:
     JC ERROR
     RET
 
-FILE: DB "S16     SYS"
+FILE: DB "SYSTEM  SYS"
 FILELEN: EQU 11
 BOOTMSG: DB "BOOT ERROR"
 BOOTLEN: EQU $ - BOOTMSG
