@@ -1,7 +1,7 @@
 S16 boot sector recommended implementation:
 
-1 Enforce a minimum of 128KiB of usable memory
-2 Naviage through root to find S16.SYS
+1 Enforce a minimum of 64KiB of usable memory
+2 Naviage through root to find SYSTEM.SYS
 3 Dump first cluster of S16.SYS into memory at 0000:0500h
 4 Follow fat chain to load the rest of the clusters (if none found then assume already loaded)
 5 Put boot drive into dl
@@ -19,7 +19,7 @@ Optionally write "Press any key to reboot.." (make sure attribute is 07h) on a n
 
 REQUIRED BEHAVIOR:
 
-2 Load S16.SYS at 0000:0500h and put boot drive into dl and perform a far jump
+2 Load SYSTEM.SYS at 0000:0500h and put boot drive into dl and perform a far jump
 
 REQUIRED STRUCTURE:
 
