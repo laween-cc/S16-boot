@@ -1,0 +1,30 @@
+RECOMEMNDED IMPLEMENATION FOR S16'S BOOT SECTOR:
+
+1 Disable bios interrupts
+2 Scan the root directory and skip sector entries and deleted entries
+3 Locate SYSTEM.SYS and load into memory at 0050:0000h using the logical sectors to read table in the entry
+4 Put boot drive into dl
+5 Perform a far jump to 0050:0000h
+
+IF ERROR:
+
+1 Clear the screen by setting video mode to 80x25
+2 Write "BOOT ERROR!" to the screen
+3 Halt
+
+Optioanlly, you can write "PRESS ANY KEY TO REBOOT.." on a new line, and then wait for a key press and then cold reboot using int 19h.
+
+READING DISK:
+
+1 Convert LBA to CHS
+2 Use int 13,2h to read from disk
+
+Optional, but you can skip LBA to CHS conversion math entirely by just using int 13,42h, but that may not be supported on some older bios.
+
+REQUIREMENETS:
+
+1 Must load SYSTEM.SYS at 0050:0000h
+1 Must have boot drive in dl before handing control to SYSTEM.SYS
+3 Must perform a far jump to 0050:0000h
+
+
