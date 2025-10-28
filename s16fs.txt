@@ -23,7 +23,7 @@ DATA AREA:
 0000h - volume name - 11 bytes
 000Bh - root sectors (1 - 32) - 1 byte
 000Ch - sectors reserved for sector entries - (1 - 32) - 1 byte
-000Dh - total volume sectors (1 - X) - 2 bytes
+000Dh - absolute total volume sectors (0 - X) - 2 bytes
 000Fh - sectors per chunk (1 - 8) - 1 byte
 
 The file system uses CHUNKS to store files effectively.
@@ -78,21 +78,32 @@ ATTRIBUTES:
 | | | | ------------ EXECUTABLE
 -------------------- RESERVED
 STANDARD:
-This file system was made in mind of S16 running on a 1.44MB bootable image or disk. Therefore I will only show for 1.44MB bootable images / storage devices! But you may freely edit the data area to tune for larger / smaller bootable images and storage devices.
+
+640KiB:
+Root secotrs = 16
+Reserved sectors for sector entries = 16
+Sectors per chunk = 2
+Total volume sectors = 0 - 1279
 
 1.44MB:
 Root sectors = 16
-Sectors for sector entries = 16
+Reserved sectors for sector entries = 16
 Sectors per chunk = 2
-Total volume sectors = 2880
+Total volume sectors = 0 - 2879
+
+~32MB:
+Root sectors = 32
+Reserved sectors for sector entries = 32
+Sectors per chunk = 4 (or 8)
+Total volume = 0 - 65535
 
 EXAMPLE LAYOUT FOR 1.44MB:
 
-LBA 0 - BOOT SECTOR - 1 SECTOR
+SECTOR OFFSET 0 - BOOT SECTOR - 1 SECTOR
 
-LBA 1 - ROOT DIRECTORY - 16 SECTORS
+SECTOR OFFSET 1 - ROOT DIRECTORY - 16 SECTORS
 
-LBA 17 - SECTORS RESERVED FOR SECTOR ENTRIES - 16 SECTORS
+SECTOR OFFSET 17 - SECTORS RESERVED FOR SECTOR ENTRIES - 16 SECTORS
 
-LBA 33 - FILE CONTENT (CHUNKS)
+SECTOR OFFSET 33 - FILE CONTENT (CHUNKS)
 
