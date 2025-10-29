@@ -33,7 +33,7 @@ The file system has 2 types of entries. One being a normal entry for files and t
 A normal entry is used for files, it has a field with 8 absolute starting sectors of the files chunk (each sector being 2 bytes), and a 2 byte field that points
 to a sector entry in case there are more chunks of the file.
 
-A sector entry is used to get more of fragmented chunks then a normal entry provides and
+A sector entry is used to get more of the fragmented chunks then a normal entry provides and
 connects to a chain starting from a normal entry to the final sector entry.
 
 The normal entry resides within root.
@@ -77,6 +77,7 @@ ATTRIBUTES:
 | | | | | ---------- HIDDEN
 | | | | ------------ EXECUTABLE
 -------------------- RESERVED
+
 STANDARD:
 
 640KiB:
