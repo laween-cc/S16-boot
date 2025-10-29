@@ -1,8 +1,8 @@
 RECOMEMNDED IMPLEMENATION FOR S16'S BOOT SECTOR:
 
 1 Disable bios interrupts
-2 Scan the root directory and skip sector entries and deleted entries
-3 Locate SYSTEM.SYS and load into memory at 0050:0000h using the logical sectors to read table in the entry
+2 Locate SYSTEM.SYS in the root directory
+3 Load the first cluster of SYSTEM.SYS at 0050:0000h and then load the rest of the clusters by following the fat chain.
 4 Put boot drive into dl
 5 Perform a far jump to 0050:0000h
 

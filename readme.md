@@ -3,8 +3,6 @@ This is S16's boot sector. It's built to be reliable, simple, and effective for 
 
 I got **some** inspiration from MS/IBM-DOS & CP/M, but I decided to throw out all of the janky parts.
 
-It uses S16's own file system (S16FS) to locate ``SYSTEM.SYS`` from root and load into memory. You can find more information about it [here.](s16fs.txt)
-
 You can find my implementation of the boot sector [here!](boot.asm)
 
 ## Specifation
