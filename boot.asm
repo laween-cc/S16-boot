@@ -39,7 +39,7 @@ BOOT:
     
     ; Locate SYSTEM.SYS
     
-    MOV CX, [7C00H + 011H]
+    MOV AX, [7C00H + 011H] ; I'll use AX as a counter for now..
 SYSTEM:
 
     CMP BYTE [BX], 00H ; No more entries
@@ -50,9 +50,10 @@ SYSTEM:
     
     MOV SI, BX
     MOV DI, FILENAME
-    mov CX, FILELEN
+    MOV CX, FILELEN
     ; CLD
     REPE CMPSB ; Using CMPSB to save bytes
+    JZ SKIP
 
     MOV SI, BX  
 
@@ -124,9 +125,8 @@ DONE:
     JMP 0050:0000H
 SKIP:
     ADD BX, 32 ; Next entry
-    LOOP SYSTEM
-    ; DEC CX
-    ; JNZ SYSTEM
+    DEC AX
+    JNZ SYSTEM
 
 ERROR: ; I tried to make this as small as possible to save bytes
     MOV AX, 0003H ; Clear the screen
