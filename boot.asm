@@ -122,9 +122,11 @@ NEXTCLUSTER:
 DONE:
 
     JMP 0050:0000H
-SKIP:   
-    DEC CX
-    JNZ SYSTEM
+SKIP:
+    ADD BX, 32 ; Next entry
+    LOOP SYSTEM
+    ; DEC CX
+    ; JNZ SYSTEM
 
 ERROR: ; I tried to make this as small as possible to save bytes
     MOV AX, 0003H ; Clear the screen
