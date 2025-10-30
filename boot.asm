@@ -122,7 +122,7 @@ NEXTCLUSTER:
     JMP FAT ; Continue getting the clusters
 DONE:
 
-    JMP 0050:0000H
+    JMP 0000:0500H
 SKIP:
     ADD BX, 32 ; Next entry
     DEC AX
