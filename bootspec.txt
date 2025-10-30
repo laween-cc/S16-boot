@@ -2,9 +2,9 @@ RECOMEMNDED IMPLEMENATION FOR S16'S BOOT SECTOR:
 
 1 Disable bios interrupts
 2 Locate SYSTEM.SYS in the root directory
-3 Load the first cluster of SYSTEM.SYS at 0050:0000h and then load the rest of the clusters by following the fat chain.
+3 Load the first cluster of SYSTEM.SYS at 0000:0500h and then load the rest of the clusters by following the fat chain.
 4 Put boot drive into dl
-5 Perform a far jump to 0050:0000h
+5 Perform a far jump to 0000:0500h
 
 IF ERROR:
 
@@ -23,8 +23,8 @@ Optional, but you can skip LBA to CHS conversion math entirely by just using int
 
 REQUIREMENETS:
 
-1 Must load SYSTEM.SYS at 0050:0000h
+1 Must load SYSTEM.SYS at 0000:0500h
 1 Must have boot drive in dl before handing control to SYSTEM.SYS
-3 Must perform a far jump to 0050:0000h
+3 Must perform a far jump to 0000:0500h
 
 
