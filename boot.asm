@@ -8,7 +8,7 @@ ORG 7C00H
 ; FAT12 ONLY
 
 BOOT:
-    CLI ; disable interrupts as they arent needed during this stage
+    CLI ; disable interrupts as they arent needed during this stage ; also to make disk reads safer!
     XOR CX, CX
     MOV ES, CX
     MOV DS, CX
