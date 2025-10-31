@@ -1,12 +1,13 @@
 # S16 - boot
-This is S16's boot sector. It's built to be reliable, simple, and effective for 8086+ processors!
+This is a boot sector for S16
 
-I got **some** inspiration from MS/IBM-DOS & CP/M, but I decided to throw out all of the janky parts.
+I got **some** inspiration from MS/PC-DOS & CP/M, but I decided to throw out all of the janky parts.
 
-You can find my implementation of the boot sector [here!](boot.asm)
+You can find my implementation of [the boot sector here!](boot.asm)
+You can also find [the SYSTEM / KERNEL here.](https://github.com/mekebabman/S16)
 
 ## Specifation
-S16's boot sector has a specifation in case someone wants to create a disk tool or wants to improve upon the boot sector.
+S16's boot sector has a specifation in case someone wants to create a disk tool or wants to improve upon my boot sector implementation.
 
 [Spec](bootspec.txt)
 
