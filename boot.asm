@@ -1,5 +1,5 @@
 BITS 16
-ORG 7C3FH
+ORG 7C3EH
 
 ; BIOS REQUIREMENTS: IBM compatible bios
 ; PROCESSOR REQUIREMENTS: 8086 / 8088+ processor
@@ -31,7 +31,7 @@ BOOT:
     
     ; Get first data sector while we're at it
     ; root staring sector + root sectors    
-    ADD AL, DH
+    ADD AL, CL
     MOV BYTE [FIRSTDATA], AL ; Store it in memory
 
     MOV BX, ROOTDUMP
@@ -53,7 +53,7 @@ SYSTEM:
     MOV CX, FILELEN
     ; CLD
     REPE CMPSB ; Using CMPSB to save bytes
-    JZ SKIP
+    JNZ SKIP
 
     MOV SI, BX  
 
@@ -171,7 +171,7 @@ READ:
     PUSH BX ;
     PUSH DX ;  
  
-    MOV BP, DX ; Preserve LBA
+    MOV BP, CX ; Preserve LBA
     MOV AH, 08H ; Get drive parameters
     INT 13H
 
