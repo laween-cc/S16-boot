@@ -63,8 +63,10 @@ SYSTEM:
     SUB AX, 2
     MOV CL, [7C00H + 00DH]
     SHL AX, CL
-    ADD AX, [FIRSTDATA]
     MOV DH, CL
+    MOV CL, [FIRSTDATA]
+    ; XOR CH, CH
+    ADD AX, CX
     MOV CX, AX
     MOV BX, 0500H
     CALL READ
@@ -77,6 +79,7 @@ SYSTEM:
     
     MOV SI, [SI + 26] ; Cluster
     MOV BX, 0700H ; Dump address
+    XOR CH, CH ; So I don't have to zero out CH again when reading a cluster
 FAT:
     ; Get the next cluster
     ; N + (N / 2) + FATDUMP
@@ -113,8 +116,10 @@ NEXTCLUSTER:
     SUB AX, 2
     MOV CL, [7C00H + 00DH]
     SHL AX, CL
-    ADD AX, [FIRSTDATA]  
     MOV DH, CL
+    MOV CL, [FIRSTDATA]
+    ; XOR CH, CH
+    ADD AX, CX 
     MOV CX, AX
     CALL READ
     
