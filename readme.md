@@ -4,6 +4,7 @@ This is a boot sector for S16
 I got **some** inspiration from MS/PC-DOS & CP/M, but I decided to throw out all of the janky parts.
 
 You can find my implementation of [the boot sector here!](boot.asm)
+
 You can also find [the SYSTEM / KERNEL here.](https://github.com/mekebabman/S16)
 
 ## Specifation
