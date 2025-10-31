@@ -24,7 +24,7 @@ Optional, but you can skip LBA to CHS conversion math entirely by just using int
 REQUIREMENETS:
 
 1 Must load SYSTEM.SYS at 0000:0500h
-1 Must have boot drive in dl before handing control to SYSTEM.SYS
+2 Must have boot drive in dl before handing control to SYSTEM.SYS
 3 Must perform a far jump to 0000:0500h
 
 
